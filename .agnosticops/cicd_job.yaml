@@ -1,0 +1,20 @@
+workflow:
+  autoTrigger: true
+  branchFilters:
+    only:
+      - master
+  containers:
+    - container:
+      name: maven
+      image: maven:3.5.2-jdk-8-alpine
+      command: |
+        mvn package
+    - container:
+      addOns:
+        isDocker: true
+        getCloudRegistryOps: true
+      name: docker
+      image: docker
+      command: |
+        docker build -t agnosticops/docker-hello-world-spring-boot .
+        sleep 20
