@@ -1,8 +1,7 @@
 workflow:
   autoTrigger: true
   branchFilters:
-    only:
-      - master
+    - master
   containers:
     - container:
       name: maven
